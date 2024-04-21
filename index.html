@@ -21,8 +21,8 @@
 
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
-
+	<link rel="stylesheet" href="css/style_hidden.css">
+	<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 
 	<style>
@@ -65,7 +65,7 @@
 			color: rgb(255, 255, 255);
 			overflow: hidden;
 			white-space: nowrap;
-			animation: typing 3s steps(20, end) infinite;
+			animation: typing 3s steps(20, end) infinite !important;
 		}
 
 		#typing-animation:before {
@@ -76,8 +76,23 @@
 			width: 0;
 			height: 100%;
 			background-color: #ccc;
-			animation: typing-cursor 0.5s ease-in-out infinite;
+			animation: typing-cursor 0.5s ease-in-out infinite !important;
 		}
+
+		@keyframes typing-cursor {
+
+			0%,
+			100% {
+				opacity: 1;
+				/* Cursor visible */
+			}
+
+			50% {
+				opacity: 0;
+				/* Cursor invisible */
+			}
+		}
+
 
 		@keyframes typing {
 			from {
@@ -99,6 +114,7 @@
 			}
 		}
 
+		/* animation: typing 3s steps(20, end) infinite;: It applies the "typing" animation to the element, which lasts for 3 seconds, has 20 steps, and repeats infinitely. */
 
 		/* project image zoom effect */
 
@@ -142,12 +158,13 @@
 			<div class="slider-item ">
 				<div class="overlay"></div>
 				<div class="container">
-					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end " style="margin-top: 7%;"
-						data-scrollax-parent="true">
-						<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png); width: 50%;  border-radius: 5%;">
+					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end "
+						style="margin-top: 7%;" data-scrollax-parent="true">
+						<div class="one-third js-fullheight order-md-last img"
+							style="background-image:url(images/bg_1.png); width: 50%;  border-radius: 5%;">
 							<div class="overlay"></div>
 						</div>
-						
+
 						<div class="one-forth d-flex  align-items-center ftco-animate"
 							data-scrollax=" properties: { translateY: '70%' }">
 							<div class="text">
@@ -155,7 +172,7 @@
 								<h1 class="mb-4 mt-3">I'm <span>Naman Jain</span></h1>
 
 								<!-- Element to contain animated typing -->
-								<span id="typing-animation"></span>
+								<span id="typing-animation" class="typingTexts"></span>
 
 								<script>
 
@@ -163,11 +180,22 @@
 									const typingAnimationElement = document.getElementById('typing-animation');
 
 									// Create an array of typing text
-									const typingTexts = [
-										'Engineer  ',
-										'Developer',
+									// const typingTexts = [
+									// 	'Engineer  ',
+									// 	'Developer',
 
-									];
+									// ];
+
+									// shortcut method for typing animation 
+									const typed = new Typed('.typingTexts', {
+										strings: ['Engineer  ', 'Developer'],
+										typeSpeed: 100,
+										backSpeed: 100,
+										backDelay: 1000,
+										loop: true,
+									});
+
+
 
 									// Create a function to display the typing animation for a given text
 									function playTypingAnimation(text) {
@@ -175,18 +203,18 @@
 										for (let i = 0; i < text.length; i++) {
 											setTimeout(() => {
 												typingAnimationElement.textContent += text[i];
-											}, i * 200); // Increase the delay to slow down the typing animation
+											}, i * 250); // Increase the delay to slow down the typing animation
 										}
 
 										// Once the animation is complete, reset the text and start over
-										setTimeout(() => {
-											typingAnimationElement.textContent = '';
-											playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-										}, text.length * 200);
+										// setTimeout(() => {
+										// 	typingAnimationElement.textContent = '';
+										// 	playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
+										// }, text.length * 250);
 									}
 
 									// Start the typing animation loop
-									playTypingAnimation(typingTexts[0]);
+									// playTypingAnimation(typingTexts[0]);
 
 								</script>
 
@@ -219,7 +247,8 @@
 								<div class="row">
 									<div class="col-sm-6 col-md-5">
 										<div class="about-imJabalpur, Indiag">
-											<img src="images/naman.jpg" class="img-fluid rounded b-shadow-a" alt="" style="border-radius:14% !important; border: 5px solid #ffbd39;">
+											<img src="images/naman.jpg" class="img-fluid rounded b-shadow-a" alt=""
+												style="border-radius:14% !important; border: 5px solid #ffbd39;">
 										</div>
 									</div>
 									<!-- Details next to profile image -->
@@ -421,7 +450,8 @@
 
 			<div class="row justify-content-center mt-5">
 				<div class="col-md-6 text-center ftco-animate">
-					<p><a href="https://onedrive.live.com/?id=7B86410C04D193BB%21247&cid=7B86410C04D193BB" target="_blank" class="btn btn-primary py-4 px-5">Download CV</a></p>
+					<p><a href="https://onedrive.live.com/?id=7B86410C04D193BB%21247&cid=7B86410C04D193BB"
+							target="_blank" class="btn btn-primary py-4 px-5">Download CV</a></p>
 				</div>
 			</div>
 		</div>
@@ -461,14 +491,15 @@
 						<a href="https://github.com/rishabhnmishra/Python_Diwali_Sales_Analysis/blob/main/Diwali_Sales_Analysis.ipynb"
 							class="block-20 zoom-effect" style="background-image: url('images/smprk.png');">
 						</a>
-						
-				
+
+
 						<div class="text mt-3 float-right d-block">
 
 							<h3 class="heading"><a
 									href="https://github.com/rishabhnmishra/Python_Diwali_Sales_Analysis/blob/main/Diwali_Sales_Analysis.ipynb">Data
 									Analysis using Python Project for Beginners</a></h3>
-							<p>SMPRK aims to make wireless connectivity easily accessible to, people everywhere through its
+							<p>SMPRK aims to make wireless connectivity easily accessible to, people everywhere through
+								its
 								platform and empower individuals to have broadband internet access along with all ,
 								its associated services.</p>
 						</div>
@@ -573,7 +604,8 @@
 					<div class="heading">
 						<h4> I love to solve business problems &amp; uncover hidden data stories </h4>
 						<br>
-						<p><a href="https://github.com/ravijoin" target="_blank" class="btn btn-primary py-3 px-5">GitHub</a></p>
+						<p><a href="https://github.com/ravijoin" target="_blank"
+								class="btn btn-primary py-3 px-5">GitHub</a></p>
 					</div>
 				</div>
 			</div>
