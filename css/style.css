@@ -4,7 +4,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9670,7 +9670,63 @@ textarea.form-control {
   stroke-dashoffset: 0;
   -webkit-animation: loader-dash 1.5s ease-in-out infinite;
   animation: loader-dash 1.5s ease-in-out infinite;
-  stroke-linecap: round; }
+  stroke-linecap: round; 
+}
+
+
+
+  .progress-wrap {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 2px rgba(0, 93, 224, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(130%);
+    z-index: 99;
+    transition: all 200ms linear;
+}
+
+.progress-wrap::after {
+    position: absolute;
+    content:'↑';
+
+    font-family: flaticon !important;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    color: #086ad8;
+    left: 0;
+    top: 0;
+    height: 46px;
+    width: 46px;
+    /* transform: rotate(90deg); */
+    cursor: pointer;
+    display: block;
+    z-index: 1;
+}
+
+.progress-wrap svg path {
+    fill: none;
+}
+
+.progress-wrap svg.progress-circle path {
+    stroke: #086ad8;
+    stroke-width: 4;
+    box-sizing: border-box;
+}
+
+.progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+
+}
 
 @-webkit-keyframes loader-rotate {
   100% {
